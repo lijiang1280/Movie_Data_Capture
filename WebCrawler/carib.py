@@ -35,7 +35,7 @@ def main(number: str) -> json:
             'tag': get_tag(lx),
             'extrafanart': get_extrafanart(lx),
             'label': get_series(lx),
-            'imagecut': 1,
+            'imagecut': 0,
 #            'actor_photo': get_actor_photo(lx, session),
             'website': f'{G_SITE}/moviepages/{number}/index.html',
             'source': 'carib.py',

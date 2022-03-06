@@ -67,8 +67,9 @@ def getSeries(html):
         return ''
 
 def main(number):
-    html = get_html('https://tellme.pw/avsox')
-    site = etree.HTML(html).xpath('//div[@class="container"]/div/a/@href')[0]
+    #html = get_html('https://tellme.pw/avsox')
+    #site = etree.HTML(html).xpath('//div[@class="container"]/div/a/@href')[0]
+    site = "http://avsox.monster"
     a = get_html(site + '/cn/search/' + number)
     html = etree.fromstring(a, etree.HTMLParser())
     result1 = str(html.xpath('//*[@id="waterfall"]/div/a/@href')).strip(" ['']")
@@ -80,7 +81,7 @@ def main(number):
             a = get_html(site + '/cn/search/' + number.replace('_', ''))
             html = etree.fromstring(a, etree.HTMLParser())
             result1 = str(html.xpath('//*[@id="waterfall"]/div/a/@href')).strip(" ['']")
-    detail = get_html("https:" + result1)
+    detail = get_html("http:" + result1)
     lx = etree.fromstring(detail, etree.HTMLParser())
     try:
         new_number = getNum(lx)
@@ -98,7 +99,7 @@ def main(number):
             'number': new_number,
             'cover': getCover(lx),
             'cover_small': getCover_small(html),
-            'imagecut': 3,
+            'imagecut': 0,
             'tag': getTag(lx),
             'label': getLabel(lx),
             'year': getYear(getRelease(lx)),

@@ -295,7 +295,8 @@ def movie_lists(source_folder, regexstr):
     source = Path(source_folder).resolve()
     skip_failed_cnt, skip_nfo_days_cnt = 0, 0
     escape_folder_set = set(re.split("[,，]", conf.escape_folder()))
-    for full_name in source.glob(r'**/*'):
+    full_name_list = source.glob(r'**/*')
+    for full_name in full_name_list:
         if main_mode != 3 and set(full_name.parent.parts) & escape_folder_set:
             continue
         if not full_name.suffix.lower() in file_type:
